@@ -82,6 +82,8 @@ body {
   margin: 15px 0;
   background: white;
   border: 1px solid #999;
+  width: 90px;
+  padding: 5px 0;
 }
 
 .status {

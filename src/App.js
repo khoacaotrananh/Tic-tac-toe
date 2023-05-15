@@ -48,23 +48,9 @@ function Board({XisNext, squares, onPlay}) {
     
     onPlay(nextSquares);
   }
-
-  function handleResetBoard() {
-    return;
-  }
-
-  const winner = calculateWinner(squares);
-  let status = null;
-  if (winner) {
-    status = "Winner: " + winner;
-  }
-  else {
-    status = "Next player: " + (XisNext ? "X" : "O");
-  }
-
+  
   return (
     <>
-      <div className="status">{status}</div>
       <div className="board-row">
         <Square value={squares[0]} onSquareClick={() => handleSquareClick(0)} />
         <Square value={squares[1]} onSquareClick={() => handleSquareClick(1)} />
@@ -80,9 +66,6 @@ function Board({XisNext, squares, onPlay}) {
         <Square value={squares[7]} onSquareClick={() => handleSquareClick(7)} />
         <Square value={squares[8]} onSquareClick={() => handleSquareClick(8)} />
       </div>
-      <button className="board-reset-btn" onClick={handleResetBoard}>
-        Reset board
-      </button>
     </>
   );
 }
@@ -120,11 +103,33 @@ export default function Game () {
   }
   );
   
+  const winner = calculateWinner(currentSquares);
+  let status = null;
+  if (winner) {
+    status = "Winner: " + winner;
+  }
+  else if (currentMove === 9) {
+    status = "Draw!"
+  }
+  else {
+    status = "Next player: " + (XisNext ? "X" : "O");
+  }
+
+  function handleResetBoard() {
+    setHistory([Array(9).fill(null)]);
+    setCurrentMove(0);
+  }
+
+  
   return (
     <div className="game">
+      <div className="status">{status}</div>
       <div className="game-board">
         <Board XisNext={XisNext} squares={currentSquares} onPlay={handlePlay}/>
       </div>
+      <button className="board-reset-btn" onClick={handleResetBoard}>
+        Reset board
+      </button>
       <div className="game-info">
         <ol className="moves-list">{moves}</ol>
       </div>
