@@ -87,3 +87,17 @@ body {
 .status {
   margin: 15px 0;
 }
+
+.game {
+  display: flex;
+  flex-direction: column;
+}
+
+.game-info {
+  margin-left: 5px;
+}
+
+.moves-list {
+  list-style: none;
+}
+
