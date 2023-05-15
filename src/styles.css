@@ -69,5 +69,37 @@ body {
   font-weight: bold;
   line-height: 30px; /* Equal "height" property */
   text-align: center;
-  
+  float: left;
 }
+
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.board-reset-btn {
+  margin: 15px 0;
+  background: white;
+  border: 1px solid #999;
+  width: 90px;
+  padding: 5px 0;
+}
+
+.status {
+  margin: 15px 0;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+}
+
+.game-info {
+  margin-left: 5px;
+}
+
+.moves-list {
+  list-style: none;
+}
+
